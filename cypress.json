@@ -1,3 +1,12 @@
 {
-  "baseUrl": "http://localhost:5500"
+  "baseUrl": "http://localhost:5500",
+  "env": {
+    "BUY_INPUT": "#buy-container > div > input",
+    "BUY_BUTTON": "#buy-container > div > button",
+    "TICKET_CONTAINER": "#ticket-container",
+    "TICKET_SIZE_LABEL": "#ticket-container > div > label",
+    "TICKET_NUMBER_TOGGLE": ".switch",
+    "TICKET_RENDER_CONTAINER": "#ticket-container > div.flex-wrap",
+    "RESULT_CONTAINER": "#result-container"
+  }
 }
