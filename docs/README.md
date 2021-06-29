@@ -1,6 +1,6 @@
 ## 기능 구현 목록
 - [ ] 프로젝트 개발 환경 설정
-  - [ ] eslint + typescript 설정
+  - [x] eslint + typescript 설정
   - [ ] cypress 설정
 - [ ] 구입 기능
   - [ ] 구입할 금액에 맞는 갯수를 구매할수 있어야 함
