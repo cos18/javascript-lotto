@@ -19,7 +19,7 @@ export default class BuyController {
     }
 
     for (let _ = 0; _ < ticketSize; _ += 1) {
-      this.data.tickets.push([]);
+      this.data.addAutoTicket();
     }
     this.data.updateView();
     return true;

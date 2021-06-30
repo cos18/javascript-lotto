@@ -15,6 +15,14 @@ export default class LottoData {
     this.resultView = undefined;
   }
 
+  addAutoTicket() {
+    const ticketSet = new Set<number>();
+    while (ticketSet.size !== 6) {
+      ticketSet.add(Math.ceil(Math.random() * 45));
+    }
+    this.tickets.push(Array.from(ticketSet).sort());
+  }
+
   updateView = () => {
     this.ticketView?.updateView(this);
     this.resultView?.updateView(this);
