@@ -18,6 +18,10 @@
         "cypress"
     ],
     "rules": {
+        "lines-between-class-members": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "no-console": "off"
     },
     "ignorePatterns": ["src/js/*"]
 }

@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "yarn tsc --watch",
-    "lint": "yarn eslint src/ts/* --fix",
+    "lint": "yarn eslint src/ts/**/*.ts --fix",
     "test": "yarn cypress open"
   }
 }
