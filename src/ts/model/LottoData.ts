@@ -2,8 +2,10 @@ import TicketContainer from '../view/TicketContainer.js';
 import BuyContainer from '../view/BuyContainer.js';
 import ResultContainer from '../view/ResultContainer.js';
 
+export type Lotto = number[];
+
 export default class LottoData {
-  public tickets: number[][];
+  public tickets: Lotto[];
   public isNumberOpened: boolean;
 
   public buyView: BuyContainer | undefined;
@@ -28,6 +30,16 @@ export default class LottoData {
 
   updateView = () => {
     this.ticketView?.updateView(this);
-    this.resultView?.updateView(this);
+    this.resultView?.updateView();
+  }
+
+  updateModal = () => {
+    this.resultView?.updateModal(this);
+  }
+
+  reset = () => {
+    this.tickets.length = 0;
+    this.isNumberOpened = false;
+    this.updateView();
   }
 }

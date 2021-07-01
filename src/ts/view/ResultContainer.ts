@@ -1,14 +1,36 @@
+import ResultController from '../controller/ResultController.js';
 import LottoData from '../model/LottoData.js';
+import ResultModal from './ResultModal.js';
 
 export default class ResultContainer {
   private $container: HTMLFormElement;
+  private $showResultButton: HTMLButtonElement;
 
-  constructor() {
+  private modal: ResultModal;
+  private controller: ResultController;
+
+  constructor(data: LottoData) {
     this.$container = document.querySelector<HTMLFormElement>('#result-container')!;
+    this.$showResultButton = document.querySelector('.open-result-modal-button')!;
+
+    this.controller = new ResultController(data);
+    this.modal = new ResultModal(this.controller);
   }
 
-  updateView(data: LottoData) {
+  onShowResultButtonClicked = () => {
+    this.controller.calcutateResult();
+  };
+
+  setEventListener = () => {
+    this.$showResultButton.addEventListener('click', this.onShowResultButtonClicked);
+    this.modal.setEventListener();
+  }
+
+  updateView() {
     this.$container.style.visibility = 'visible';
-    console.log(data);
+  }
+
+  updateModal(data: LottoData) {
+    this.modal.updateModal(data);
   }
 }

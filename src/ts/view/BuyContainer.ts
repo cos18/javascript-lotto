@@ -4,7 +4,7 @@ import LottoData from '../model/LottoData.js';
 export default class BuyContainer {
   private $buyInput: HTMLInputElement;
   private $buyButton: HTMLButtonElement;
-  
+
   private controller: BuyController;
 
   constructor(data: LottoData) {

@@ -1,5 +1,5 @@
 import TicketController from '../controller/TicketController.js';
-import LottoData from '../model/LottoData.js';
+import LottoData, { Lotto } from '../model/LottoData.js';
 
 export default class TicketContainer {
   private $container: HTMLElement;
@@ -41,7 +41,7 @@ export default class TicketContainer {
       this.$ticketRenderContainer.classList.remove('flex-col');
     }
     this.$ticketRenderContainer.innerHTML = '';
-    data.tickets.forEach((ticket: number[]) => {
+    data.tickets.forEach((ticket: Lotto) => {
       const currTicket = this.$ticketElement.cloneNode() as HTMLSpanElement;
       currTicket.innerHTML = `🎟️ ${data.isNumberOpened ? ticket.join(', ') : ''}`;
       this.$ticketRenderContainer.appendChild(currTicket);
