@@ -15,7 +15,6 @@ export default class ResultContainer {
     this.$container = document.querySelector<HTMLFormElement>('#result-container')!;
     this.$showResultButton = document.querySelector('.open-result-modal-button')!;
     this.$winningNumberInputs = this.$container.querySelectorAll('div > div > div > input')!;
-    console.log(this.$winningNumberInputs);
 
     this.controller = new ResultController(data);
     this.modal = new ResultModal(this.controller);
@@ -47,5 +46,9 @@ export default class ResultContainer {
 
   updateModal(data: LottoData, winningTickets: WinningInfo) {
     this.modal.updateModal(data, winningTickets);
+  }
+
+  resetView() {
+    this.$container.style.visibility = 'hidden';
   }
 }

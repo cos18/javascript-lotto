@@ -88,6 +88,8 @@ export default class LottoData {
   reset = () => {
     this.tickets.length = 0;
     this.isNumberOpened = false;
-    this.updateView();
+    this.buyView?.resetView();
+    this.ticketView?.resetView();
+    this.resultView?.resetView();
   }
 }

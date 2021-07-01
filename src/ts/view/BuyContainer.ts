@@ -25,4 +25,9 @@ export default class BuyContainer {
   setEventListener = () => {
     this.$buyButton.addEventListener('click', this.onBuyButtonClicked);
   };
+
+  resetView = () => {
+    this.$buyInput.disabled = false;
+    this.$buyButton.disabled = false;
+  }
 }

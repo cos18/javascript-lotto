@@ -47,4 +47,9 @@ export default class TicketContainer {
       this.$ticketRenderContainer.appendChild(currTicket);
     });
   }
+
+  resetView() {
+    this.$container.style.visibility = 'hidden';
+    this.$ticketRenderContainer.innerHTML = '';
+  }
 }
