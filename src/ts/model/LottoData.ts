@@ -4,12 +4,15 @@ import ResultContainer from '../view/ResultContainer.js';
 
 export default class LottoData {
   public tickets: number[][];
+  public isNumberOpened: boolean;
+
   public buyView: BuyContainer | undefined;
   public ticketView: TicketContainer | undefined;
   public resultView: ResultContainer | undefined;
 
   constructor() {
     this.tickets = [];
+    this.isNumberOpened = false;
     this.buyView = undefined;
     this.ticketView = undefined;
     this.resultView = undefined;

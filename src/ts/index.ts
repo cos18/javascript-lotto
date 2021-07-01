@@ -24,10 +24,11 @@ $modalClose!.addEventListener('click', onModalClose);
 const data = new LottoData();
 
 const buyView = new BuyContainer(data);
-const ticketView = new TicketContainer();
+const ticketView = new TicketContainer(data);
 const resultView = new ResultContainer();
 
 data.buyView = buyView;
 data.ticketView = ticketView;
 data.resultView = resultView;
 buyView.setEventListener();
+ticketView.setEventListener();

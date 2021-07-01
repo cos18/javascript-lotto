@@ -90,7 +90,7 @@ describe('Buy container', () => {
       .get(Cypress.env('TICKET_RENDER_CONTAINER'))
       .find('span')
       .each(($el) => {
-        const numArr = $el.text().split(', ').map((val) => Number(val));
+        const numArr = $el.text().substr(4).split(', ').map((val) => Number(val));
         expect(numArr).to.be.an('array')
           .and.to.be.lengthOf(6)
           .and.to.satisfy((nums) => (
