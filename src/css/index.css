@@ -23,10 +23,19 @@ body {
   height: 36px;
 }
 
+.manual-number {
+  width: 30px;
+  height: 36px;
+}
+
 #ticket-container {
   visibility: hidden;
 }
 
 #result-container {
+  visibility: hidden;
+}
+
+#manual-container {
   visibility: hidden;
 }

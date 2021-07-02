@@ -34,7 +34,7 @@ export default class LottoData {
     while (ticketSet.size !== 6) {
       ticketSet.add(Math.ceil(Math.random() * 45));
     }
-    this.tickets.push(Array.from(ticketSet).sort());
+    this.tickets.push(Array.from(ticketSet).sort((a: number, b: number) => a - b));
   }
 
   updateView = () => {
