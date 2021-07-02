@@ -14,7 +14,10 @@ export interface WinningInfo {
   winningPrize: number;
 }
 
+export const LOTTO_PRICE = 1000;
+
 export default class LottoData {
+  public money: number;
   public tickets: Lotto[];
   public isNumberOpened: boolean;
 
@@ -24,12 +27,18 @@ export default class LottoData {
   public manualView: ManualContainer | undefined;
 
   constructor() {
+    this.money = 0;
     this.tickets = [];
     this.isNumberOpened = false;
     this.buyView = undefined;
     this.ticketView = undefined;
     this.resultView = undefined;
     this.manualView = undefined;
+  }
+
+  setMoney(money: number) {
+    this.money = money;
+    this.updateView();
   }
 
   addAutoTicket() {
@@ -40,16 +49,33 @@ export default class LottoData {
     this.tickets.push(Array.from(ticketSet).sort((a: number, b: number) => a - b));
   }
 
+  addLeftTicket() {
+    const ticketSize = Math.floor(this.money / 1000);
+    if (ticketSize * 1000 !== this.money) {
+      alert(`잔돈으로 ${this.money - ticketSize * 1000}원이 남았습니다`);
+    }
+
+    for (let _ = 0; _ < ticketSize; _ += 1) {
+      this.addAutoTicket();
+    }
+    this.updateView();
+    this.manualView?.disableView();
+  }
+
   addManualTicket(ticket: Lotto) {
     this.tickets.push(ticket.sort((a: number, b: number) => a - b));
-    this.updateView();
-    console.log(this.tickets);
+    this.money -= LOTTO_PRICE;
+    if (this.money >= LOTTO_PRICE) {
+      this.updateView();
+    } else {
+      this.addLeftTicket();
+    }
   }
 
   updateView = () => {
     this.ticketView?.updateView(this);
     this.resultView?.updateView();
-    this.manualView?.updateView();
+    this.manualView?.updateView(this);
   }
 
   updateModal = (winningNumbers: number[]) => {
@@ -101,5 +127,6 @@ export default class LottoData {
     this.buyView?.resetView();
     this.ticketView?.resetView();
     this.resultView?.resetView();
+    this.manualView?.resetView();
   }
 }

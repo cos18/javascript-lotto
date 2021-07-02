@@ -28,15 +28,40 @@ export default class ManualContainer {
       return;
     }
     this.$manualNumberInputs.forEach(($input) => {
-      $input.innerText = '';
+      $input.value = '';
     });
   };
 
-  updateView = () => {
+  onBuyLeftButtonClicked = () => {
+    this.controller.buyLeftAutoTicket();
+  }
+
+  updateView = (data: LottoData) => {
+    const ticketSize = Math.floor(data.money / 1000);
     this.$container.style.display = 'block';
+    this.$buyLeftButton.innerText = `남은 돈으로 자동 ${ticketSize}매 구매하기`;
+  }
+
+  disableView = () => {
+    this.$manualNumberInputs.forEach(($input: HTMLInputElement) => {
+      $input.disabled = true;
+    });
+    this.$buyManualButton.disabled = true;
+    this.$buyLeftButton.disabled = true;
+    this.$buyLeftButton.innerText = '구입 금액으로 로또를 모두 구매했습니다';
+  }
+
+  resetView = () => {
+    this.$manualNumberInputs.forEach(($input: HTMLInputElement) => {
+      $input.disabled = false;
+    });
+    this.$buyManualButton.disabled = false;
+    this.$buyLeftButton.disabled = false;
+    this.$container.style.display = 'none';
   }
 
   setEventListener = () => {
     this.$buyManualButton.addEventListener('click', this.onBuyManualButtonClicked);
+    this.$buyLeftButton.addEventListener('click', this.onBuyLeftButtonClicked);
   }
 }

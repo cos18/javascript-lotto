@@ -20,4 +20,8 @@ export default class ManualController {
     this.data.addManualTicket(ticket);
     return true;
   }
+
+  buyLeftAutoTicket() {
+    this.data.addLeftTicket();
+  }
 }

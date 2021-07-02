@@ -34,7 +34,7 @@ export default class TicketContainer {
 
   updateView(data: LottoData) {
     this.$container.style.visibility = 'visible';
-    this.$ticketSizeLabel.innerHTML = `총 ${data.tickets.length}개를 구매하였습니다.`;
+    this.$ticketSizeLabel.innerHTML = `총 ${data.tickets.length}매를 구매하였습니다.`;
 
     this.$ticketRenderContainer.classList.add('flex-col');
     if (!data.isNumberOpened) {
