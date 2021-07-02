@@ -1,6 +1,7 @@
 import TicketContainer from '../view/TicketContainer.js';
 import BuyContainer from '../view/BuyContainer.js';
 import ResultContainer from '../view/ResultContainer.js';
+import ManualContainer from '../view/ManualContainer.js';
 
 export type Lotto = number[];
 
@@ -20,6 +21,7 @@ export default class LottoData {
   public buyView: BuyContainer | undefined;
   public ticketView: TicketContainer | undefined;
   public resultView: ResultContainer | undefined;
+  public manualView: ManualContainer | undefined;
 
   constructor() {
     this.tickets = [];
@@ -27,6 +29,7 @@ export default class LottoData {
     this.buyView = undefined;
     this.ticketView = undefined;
     this.resultView = undefined;
+    this.manualView = undefined;
   }
 
   addAutoTicket() {
@@ -37,9 +40,16 @@ export default class LottoData {
     this.tickets.push(Array.from(ticketSet).sort((a: number, b: number) => a - b));
   }
 
+  addManualTicket(ticket: Lotto) {
+    this.tickets.push(ticket.sort((a: number, b: number) => a - b));
+    this.updateView();
+    console.log(this.tickets);
+  }
+
   updateView = () => {
     this.ticketView?.updateView(this);
     this.resultView?.updateView();
+    this.manualView?.updateView();
   }
 
   updateModal = (winningNumbers: number[]) => {

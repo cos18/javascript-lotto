@@ -30,7 +30,6 @@ export default class ResultContainer {
       return;
     }
     this.$winningNumberInputs.forEach(($input: HTMLInputElement) => {
-      // eslint-disable-next-line no-param-reassign
       $input.value = '';
     });
   };

@@ -37,5 +37,5 @@ body {
 }
 
 #manual-container {
-  visibility: hidden;
+  display: none;
 }
